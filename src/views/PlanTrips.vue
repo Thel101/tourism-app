@@ -1,7 +1,8 @@
 <template>
   <div class="plan-trip">
     <Banner :src="'/assets/images/thailand1.jpeg'"></Banner>
-    <h3 class="my-5 headline text-center text-decoration-underline text--darken-2 grey--text">Plan your dream trip with us</h3>
+    <h3 class="my-5 headline text-center text-decoration-underline text--darken-2 grey--text">Plan your dream trip with us
+    </h3>
     <v-container>
       <v-form ref="form" lazy-validation>
         <h3>Personal Information</h3>
@@ -32,7 +33,7 @@
             <v-select :items="accomodation" label="Accomodation Preferences"></v-select>
             <v-select :items="room" label="Room Configuration"></v-select>
             <v-combobox :items="activities" label="Interest and activities" multiple chips></v-combobox>
-          
+
           </v-col>
 
           <v-col class="col-sm-12 col-md-6">
@@ -45,31 +46,33 @@
         </v-row>
         <v-row>
 
-<v-col class="col-sm-12 col-md-6">
-  <h3>Occasional Preferences </h3>
-  <v-select :items="occasion" label="Occasional Preferences"></v-select>
-  <v-combobox :items="additional" label="Additional Services" multiple chips></v-combobox>
+          <v-col class="col-sm-12 col-md-6">
+            <h3>Occasional Preferences </h3>
+            <v-select :items="occasion" label="Occasional Preferences"></v-select>
+            <v-combobox :items="additional" label="Additional Services" multiple chips></v-combobox>
 
-</v-col>
+          </v-col>
 
-<v-col class="col-sm-12 col-md-6">
-  <h3>Budge Preferences</h3>
-  <v-select :items="comfort" label="Comfort level"></v-select>
-  <v-select :items="transportation" label="Preferred transportation"></v-select>
-</v-col>
-</v-row>
-<v-row>
-  <v-col class="col-12">
-    <v-textarea label="Additional Comments"></v-textarea>
-  </v-col>
-</v-row>
+          <v-col class="col-sm-12 col-md-6">
+            <h3>Budge Preferences</h3>
+            <v-select :items="comfort" label="Comfort level"></v-select>
+            <v-select :items="transportation" label="Preferred transportation"></v-select>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="col-12">
+            <v-textarea label="Additional Comments"></v-textarea>
+          </v-col>
+        </v-row>
 
-
-
-
-
-
-
+        <div class="text-center">
+          <v-btn color="primary" class="ma-2 white--text">
+            Upload Trip Plan
+            <v-icon right dark>
+              mdi-cloud-upload
+            </v-icon>
+          </v-btn>
+        </div>
       </v-form>
     </v-container>
   </div>
@@ -89,35 +92,35 @@ export default {
         'Trekking',
         'Vuetify',
       ],
-      interests:[
+      interests: [
         'historical sites',
         'locat markets',
         'festivals'
       ],
-      adventure:[
+      adventure: [
         'mild',
         'moderate',
         'high'
       ],
-      culinary:[
+      culinary: [
         'dietary restrictions',
         'local-dishes',
         'western cuisines'
       ],
-      occasion:[
+      occasion: [
         'birthday',
         'anniversary'
       ],
-      additional:[
+      additional: [
         'photographers',
         'guides'
       ],
-      comfort:[
+      comfort: [
         'luxury',
         'mid-range',
         'budget'
       ],
-      transportation:[
+      transportation: [
         'public transportation',
         'fight',
         'private car'
