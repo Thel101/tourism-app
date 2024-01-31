@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
 import Destination from '../views/Destination.vue'
+import DestinationDetail from '../views/DestinationDetail.vue'
 import PlanTrips from '../views/PlanTrips.vue'
 
 Vue.use(VueRouter)
@@ -18,6 +19,12 @@ const routes = [
     path: '/destinations',
     name: 'Destinations',
     component: Destination
+  },
+  {
+    path: '/destinations/details/:id',
+    name: 'DestinationDetails',
+    component: DestinationDetail,
+    props : true
   }
   ,
   {
