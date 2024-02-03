@@ -3,7 +3,7 @@
     <Hero></Hero>
     <h3 class="my-5 headline text-center text-decoration-underline text--darken-2 grey--text">Destination List</h3>
     <v-row>
-      <v-col class="sm-6 md-4" v-for="place in places" :key="place.id" >
+      <v-col class="col-sm-6 col-md-4" v-for="place in places" :key="place.id">
         <v-card class="mx-auto" max-width="400">
           <v-img class="white--text align-end" height="200px" :src="place.image">
             <v-card-title>{{ place.title }}</v-card-title>
@@ -14,6 +14,10 @@
           </v-card-text>
 
           <v-card-actions>
+            <v-btn color="orange" text>
+              Share
+            </v-btn>
+
             <v-btn color="orange" text>
               Explore
             </v-btn>
@@ -39,9 +43,7 @@ export default {
     { id: 4, title : 'Myanmar', description: 'Timeless Beauty Beckons', image: '/assets/images/cambodia1.jpeg'},
     { id: 5, title : 'Thailand', description: 'The Kingdom of smiles', image: '/assets/images/cambodia1.jpeg'},
     { id: 6, title : 'Thailand', description: 'The Kingdom of smiles', image: '/assets/images/cambodia1.jpeg'}
-   ],
-   reveal : false,
-
+   ]
   }),
 }
 </script>
