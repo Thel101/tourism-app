@@ -15,13 +15,10 @@
 
           <v-card-actions>
             <v-btn color="orange" text>
-              Share
-            </v-btn>
-
-            <v-btn color="orange" text>
               Explore
             </v-btn>
           </v-card-actions>
+          
         </v-card>
       </v-col>
     </v-row>
@@ -42,7 +39,9 @@ export default {
     { id: 4, title : 'Myanmar', description: 'Timeless Beauty Beckons', image: '/assets/images/cambodia1.jpeg'},
     { id: 5, title : 'Thailand', description: 'The Kingdom of smiles', image: '/assets/images/cambodia1.jpeg'},
     { id: 6, title : 'Thailand', description: 'The Kingdom of smiles', image: '/assets/images/cambodia1.jpeg'}
-   ]
+   ],
+   reveal : false,
+
   }),
 }
 </script>
