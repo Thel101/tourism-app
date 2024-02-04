@@ -1,14 +1,14 @@
 <template>
     <nav>
-        <v-app-bar app flat>
+        <v-app-bar dark class="white--text" app flat>
 
             <v-toolbar-title>Asiavista Expeditions</v-toolbar-title>
 
             <v-spacer></v-spacer>
 
             <v-hover v-slot="{ hover }" open-delay="100" v-for="link in links" :key="link.text">
-                <v-btn text :class="{ 'on-hover': hover }">
-                    <router-link :to="link.route" class="black--text links">
+                <v-btn text :class="{ 'on-hover': hover }" rounded>
+                    <router-link :to="link.route" class="white--text links">
                         {{ link.text }}
                     </router-link>
                 </v-btn>

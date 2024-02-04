@@ -10,7 +10,7 @@
 
     <!-- Our Vision -->
     <v-row class="mt-10 indigo lighten-4">
-      <v-col class="col-sm-12 col-md-5">
+      <v-col class="col-sm-12 col-md-5" style="margin: 0; padding: 0; object-fit: cover;">
         <v-img class="rounded-lg rounded-tl-5" src="assets/images/about1.jpeg"></v-img>
       </v-col>
       <v-col class="col-sm-12 col-md-7 d-flex flex-column" align-self="center">
