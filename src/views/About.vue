@@ -9,17 +9,15 @@
       discerning explorers.</p>
 
     <!-- Our Vision -->
-    <v-row class="mt-10 indigo lighten-4">
+    <v-row v-if="content && content[0]" class="mt-10 indigo lighten-4">
       <v-col class="col-sm-12 col-md-5" style="margin: 0; padding: 0; object-fit: cover;">
-        <v-img class="rounded-lg rounded-tl-5" src="assets/images/about1.jpeg"></v-img>
+        <v-img class="rounded-lg rounded-tl-5" :src="imageUrl"></v-img>
       </v-col>
       <v-col class="col-sm-12 col-md-7 d-flex flex-column" align-self="center">
-        <h3 class="my-5 headline text-center text--darken-2 grey--text">Our Vision</h3>
+        <h3 class="my-5 headline text-center text--darken-2 grey--text">{{ content[0].title }}</h3>
         <v-card-text class="text--primary text-center">
 
-          <div>We take pride in our ability to connect you with the authentic essence of Southeast Asia. Whether it's
-            savoring local delicacies, participating in traditional ceremonies, or meeting local artisans, every
-            moment is an opportunity for genuine cultural exchange.
+          <div>{{ content[0].description }}
           </div>
         </v-card-text>
       </v-col>
@@ -117,12 +115,12 @@
         </v-sheet>
       </v-carousel-item>
     </v-carousel>
- <!-- Last section -->
-    </div>
+    <!-- Last section -->
+  </div>
 </template>
 <script>
 import Banner from '../components/Banner.vue';
-import Home from './Home.vue';
+import axios from 'axios'
 export default {
   components: {
     Banner
@@ -131,16 +129,51 @@ export default {
     return {
 
       slides: [
-        {id:1, color: 'primary', text: 'Your Journey Begins Here', emphaisis: false},
-        {id:2, color: 'blue lighten-2', text: 'Embark on a journey of discovery with', emphaisis: true},
-        {id:3, color: 'yellow darken-2', text: 'Let us be your guide to the enchanting landscapes, warm hospitality, and vibrant cultures that define Southeast Asia.', emphaisis: false},
-        {id:4, color: 'red', text: 'Whether you seek the thrill of adventure or the tranquility of hidden retreats, we invite you to join us in creating memories that last a lifetime', emphaisis: false},
-        {id:5, color: 'orange', text: 'Come explore Southeast Asia with us – where authenticity meets adventure.', emphaisis: false}
-    
+        { id: 1, color: 'primary', text: 'Your Journey Begins Here', emphaisis: false },
+        { id: 2, color: 'blue lighten-2', text: 'Embark on a journey of discovery with', emphaisis: true },
+        { id: 3, color: 'yellow darken-2', text: 'Let us be your guide to the enchanting landscapes, warm hospitality, and vibrant cultures that define Southeast Asia.', emphaisis: false },
+        { id: 4, color: 'red', text: 'Whether you seek the thrill of adventure or the tranquility of hidden retreats, we invite you to join us in creating memories that last a lifetime', emphaisis: false },
+        { id: 5, color: 'orange', text: 'Come explore Southeast Asia with us – where authenticity meets adventure.', emphaisis: false }
+
       ],
+      content: [],
+      imageUrl: ''
     }
+  },
+  mounted() {
+    axios.get('http://tourism-app-backend.test/api/contents/About', { params: { page: "About" } })
+      .then(response => {
+        this.content = response.data;
+        console.log(this.content)
+        this.getImageUrl(this.content[0].background);
+      })
+      .catch(error => console.log(error));
+  },
+  methods: {
+    getImageUrl(filename) {
+      axios.get(`http://tourism-app-backend.test/api/contents/image/${filename}`)
+        .then(response => {
+          console.log(response.data)
+          this.imageUrl = this.toBase64(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    toBase64(imageData) {
+
+      var binary = '';
+      var bytes = new Uint8Array(imageData);
+      var len = bytes.byteLength;
+      for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return window.btoa(binary);
+
     }
-  }
+  },
+
+}
 
 </script>
 <style scoped>
