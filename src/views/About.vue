@@ -151,24 +151,25 @@ export default {
   },
   methods: {
     getImageUrl(filename) {
-      axios.get(`http://tourism-app-backend.test/api/contents/image/${filename}`)
+      axios.get(`http://tourism-app-backend.test/api/contents/image/${filename}`,
+      {responseType : 'blob'})
         .then(response => {
-          console.log(response.data)
-          this.imageUrl = this.toBase64(response.data)
+         const url = URL.createObjectURL(response.data);
+         this.imageUrl = url;
+         console.log(this.imageUrl)
         })
         .catch(error => {
           console.log(error)
         })
     },
-    toBase64(imageData) {
+    toBase64(image) {
 
-      var binary = '';
-      var bytes = new Uint8Array(imageData);
-      var len = bytes.byteLength;
-      for (var i = 0; i < len; i++) {
-        binary += String.fromCharCode(bytes[i]);
+      const binary = new Uint8Array(image);
+      let imageData = '';
+      for (let i = 0; i < binary.length; i++) {
+        imageData += String.fromCharCode(binary[i]);
       }
-      return window.btoa(binary);
+      this.imageUrl = 'data:image/jpeg;base64,' + btoa(imageData);
 
     }
   },
